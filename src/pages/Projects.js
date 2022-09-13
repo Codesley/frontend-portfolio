@@ -7,21 +7,23 @@ function Projects(props) {
     const data = await response.json();
     setProjects(data);
   };
-  useEffect(()=> get ProjectsData(), []);
+  useEffect(() => {
+    getProjectsData();
+  }, []);
   const loaded = () => {
-    return projects.map((project)=>(
-        <div>
+    return projects.map((project) => (
+      <div>
         <h1>{project.name}</h1>
-        <img src = {project.img} />
+        <img src={project.img} />
         <a href={project.git}>
-            <button>Github</button>
+          <button>Github</button>
         </a>
         <a href={project.live}>
-          <button>live site</button>
+          <button>Live site</button>
         </a>
-    </div>
-    ))
-  }
+      </div>
+    ));
+  };
   return projects ? loaded() : <h1>Loading...</h1>;
 }
 
